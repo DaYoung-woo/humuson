@@ -4,10 +4,17 @@ export const SearchBar = () => {
   return (
     <div className="w-full">
       <div className="bg-white border-b px-4 py-3">
-        <div className="flex items-center space-x-4 justify-center">
+        <div className="flex flex-row items-center space-x-4 justify-center">
           {/* Search Input */}
           <div className="flex-1 max-w-2xl flex items-center space-x-2">
-            <div className="flex-1">
+            <div className="basis-1/4">
+              <input
+                type="text"
+                placeholder="등록일 기준"
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              />
+            </div>
+            <div className="flex-auto w-52">
               <input
                 type="text"
                 placeholder="검색어를 입력해주세요"

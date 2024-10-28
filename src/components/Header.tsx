@@ -1,7 +1,7 @@
 
 import { MdKeyboardArrowDown, MdMenu } from 'react-icons/md';
 
-export const Header = () => {
+export const Header = ({isSidebarOpen, setIsSidebarOpen} : {isSidebarOpen: boolean, setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
   return (
       <div className="w-full">
@@ -9,6 +9,7 @@ export const Header = () => {
           <div className="flex items-center space-x-4">
             <button 
               className="hover:bg-emerald-700 p-1 rounded-lg transition-colors"
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
               <MdMenu className="w-6 h-6" />
             </button>
