@@ -2,7 +2,6 @@
 import { MdKeyboardArrowDown, MdMenu } from 'react-icons/md';
 
 export const Header = ({isSidebarOpen, setIsSidebarOpen} : {isSidebarOpen: boolean, setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
-
   return (
       <div className="w-full">
         <div className="bg-emerald-600 text-white px-4 py-3 flex items-center justify-between">

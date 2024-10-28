@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Outlet } from 'react-router-dom';
-import { MenuItem } from "../MenuItem";
 import { MdSpaceDashboard} from 'react-icons/md';
 import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { IoAccessibility } from "react-icons/io5";
 import { MenuItemType } from "../../types";
 import { Header } from "./Header";
+import MenuItem from "./MenuItem";
+
 
 
 const menuItems: MenuItemType[] = [
   {
     icon: <MdSpaceDashboard className="w-5 h-5" />,
     label: '게시판',
-    link: '/',
     subItems: [
-      { label: '공지사항', link:'/notice'},
+      { label: '공지사항', link:'/'},
       { label: 'Q&A', link: '/qna'},
     ]
   },
@@ -39,8 +39,8 @@ export const Layout = () => {
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
       <div className="flex" style={{height: 'calc(100% - 56px)'}}>
         {/* 메뉴 네비게이션 */}
-        <div className={`bg-gray-50 border-r transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-0'} overflow-hidden`}>
-          <div className="p-4">
+        <div className={`bg-gray-50 border-r transition-all duration-300 ${isSidebarOpen ? 'w-56' : 'w-0'} overflow-hidden`}>
+          <div className="py-2">
             <div className="space-y-2">
               {menuItems.map((item: MenuItemType, index: number) => (
                 <MenuItem key={index} item={item} /> 
