@@ -4,9 +4,16 @@ import { MdSearch } from 'react-icons/md';
 import { ko } from 'date-fns/locale/ko';
 import { useSearchContext } from "../context/SearchContext";
 
+const selectOptions = [
+  { value: 'id', label: 'ID' },
+  { value: 'subject', label: '제목' },
+  { value: 'writer', label: '작성자' },
+]
+const inputStyles = "w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500";
+
 export const SearchBar = () => {
   const { searchKeyword, filter, startDate, setSearchKeyword, setFilter, setStartDate, handleFilterData } = useSearchContext();
-
+  
   return (
     <div className="w-full">
       <div className="bg-white border-b px-4 py-6">
@@ -17,7 +24,7 @@ export const SearchBar = () => {
                 placeholderText="등록일 기준"
                 selected={startDate} 
                 onChange={(date) => setStartDate(date)} 
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className={inputStyles}
                 dateFormat="yyyy-MM-dd"
                 locale={ko}
               />
@@ -27,17 +34,16 @@ export const SearchBar = () => {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             >
-              <option value="id">ID</option>
-              <option value="subject">제목</option>
-              <option value="writer">작성자</option>
+              {selectOptions.map(el => <option value={el.value} key={el.value}>{el.label}</option>)}
             </select>
             <div className="flex-auto w-52">
               <input
                 type="text"
                 placeholder="검색어를 입력해주세요"
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className={inputStyles}
                 value={searchKeyword}
                 onChange={(e) => setSearchKeyword(e.target.value)}
+                onKeyUp ={(e) => e.key === 'Enter' && handleFilterData()}
               />
             </div>
             

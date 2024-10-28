@@ -7,3 +7,27 @@
   background-size: 0.7rem;
   background-position: right 0.7rem center;
 }
+
+.react-datepicker {
+  border-color: #efefef;
+  color: #333
+}
+
+.react-datepicker__header {
+  background-color: #fff;
+  border-bottom-color: #efefef;
+}
+
+.react-datepicker__current-month{
+  font-weight: 400;
+}
+
+.react-datepicker__day-name{
+  color: #999;
+}
+
+.react-datepicker__triangle path{
+  fill: #fff !important;
+  color: #efefef !important;
+  stroke: #efefef !important;
+}
