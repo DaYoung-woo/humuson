@@ -4,7 +4,7 @@ import { MenuItemType } from '../../types';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const MenuItem = ({item}: {item: MenuItemType}) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(item.label === '게시판' ? true : false);
   const navigate = useNavigate();
   const {pathname} = useLocation();
 
@@ -38,12 +38,12 @@ const MenuItem = ({item}: {item: MenuItemType}) => {
 
       {/* Sub Menu Items */}
       {item.subItems && isOpen && (
-        <div className="ml-8 mt-1 space-y-1">
+        <div className="ml-8 mr-4 mt-1 space-y-1">
           {item.subItems.map((subItem, index) => (
             <button
               key={index}
               onClick={() => navigate(subItem.link)}
-              className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm"
+              className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm ${pathname === subItem.link ? 'bg-gray-100' : ''}`}
             >
               <span className={`flex-1 text-left ${pathname === subItem.link ? 'text-emerald-600' : ''}`}>{subItem.label}</span>
             </button>

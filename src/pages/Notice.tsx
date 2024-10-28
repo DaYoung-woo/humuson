@@ -3,25 +3,46 @@ import { SearchBar } from '../components/SearchBar'
 import { MdAdd, MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import noticeList from '../mock/noticeList.json';
 
-const Notice = () => { 
+const itemsPerPage = 5;
+
+export const Notice = () => { 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const [tableData, setTableData] = useState([...noticeList].splice(0, itemsPerPage));
+  
+  const filteredDate = () => {
+    return [...noticeList]
+  }
+  const handleClickPage = (page: number) => {
+    setCurrentPage(page + 1)
+    setTableData(filteredDate().splice((page * itemsPerPage), itemsPerPage))
+  }
+  
+  const handleClickPrevPage = () => {
+    if (currentPage === 1) return
+    setCurrentPage(currentPage - 1)
+    setTableData(filteredDate().splice(((currentPage - 2) * itemsPerPage), itemsPerPage))
+  }
+
+  const handleClickNextPage = () => {
+    if (currentPage === Math.ceil(filteredDate.length / itemsPerPage)) return
+    setTableData(filteredDate().splice(((currentPage) * itemsPerPage), itemsPerPage))
+    setCurrentPage(currentPage + 1)
+  }
 
   // 페이지네이션 계산
-  const totalPages = Math.ceil(noticeList.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredDate().length / itemsPerPage);
 
   return (
-    <div style={{width: 'calc(100% - 223px)'}} className='overflow-y-auto' >
+    <div style={{width: 'calc(100% - 223px)'}} className='overflow-y-auto h-full bg-gray-50'>
       <SearchBar/>
-      <div className="p-6 bg-gray-50">
+      <div className="p-6">
         {/* Table Controls */}
         <div className="mb-4 flex justify-between items-center">
           <div className="text-gray-600">
-            전체 <span className="text-emerald-600 font-medium">{noticeList.length}</span>건
+            전체 <span className="text-emerald-600 font-medium">{filteredDate().length}</span>건
           </div>
           <button 
             className="flex items-center space-x-2 bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition-colors"
-            onClick={() => console.log('Add new item')}
           >
             <MdAdd className="w-5 h-5" />
             <span>추가</span>
@@ -48,7 +69,7 @@ const Notice = () => {
               </tr>
             </thead>
             <tbody>
-              {noticeList.map((row, index) => (
+              {tableData.map((row, index) => (
                 <tr 
                   key={row.id}
                   className={`
@@ -76,7 +97,7 @@ const Notice = () => {
           </table>
 
           {/* Empty State */}
-          {noticeList.length === 0 && (
+          {tableData.length === 0 && (
             <div className="py-12 text-center text-gray-500">
               데이터가 없습니다.
             </div>
@@ -84,10 +105,11 @@ const Notice = () => {
         </div>
 
         {/* Pagination */}
-        {noticeList.length > 0 && (
+        {filteredDate().length > 0 && (
           <div className="flex items-center justify-center space-x-2 py-4 border-t">
             <button
               disabled={currentPage === 1}
+              onClick={handleClickPrevPage}
               className={`p-2 rounded-md ${
                 currentPage === 1
                   ? 'text-gray-300 cursor-not-allowed'
@@ -100,7 +122,7 @@ const Notice = () => {
             {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i + 1}
-                onClick={() => setCurrentPage(i + 1)}
+                onClick={() => handleClickPage(i)}
                 className={`px-3 py-1 rounded-md ${
                   currentPage === i + 1
                     ? 'bg-emerald-600 text-white'
@@ -113,6 +135,7 @@ const Notice = () => {
 
             <button
               disabled={currentPage === totalPages}
+              onClick={handleClickNextPage}
               className={`p-2 rounded-md ${
                 currentPage === totalPages
                   ? 'text-gray-300 cursor-not-allowed'
@@ -127,5 +150,3 @@ const Notice = () => {
     </div>
   )
 }
-
-export default Notice

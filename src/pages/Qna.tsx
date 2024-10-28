@@ -1,9 +1,5 @@
-import React from 'react'
-
-const Qna = () => {
+export const Qna = () => {
   return (
     <div>Qna</div>
   )
 }
-
-export default Qna

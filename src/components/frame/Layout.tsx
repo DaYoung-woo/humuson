@@ -7,8 +7,6 @@ import { MenuItemType } from "../../types";
 import { Header } from "./Header";
 import MenuItem from "./MenuItem";
 
-
-
 const menuItems: MenuItemType[] = [
   {
     icon: <MdSpaceDashboard className="w-5 h-5" />,
@@ -39,7 +37,7 @@ export const Layout = () => {
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
       <div className="flex" style={{height: 'calc(100% - 56px)'}}>
         {/* 메뉴 네비게이션 */}
-        <div className={`bg-gray-50 border-r transition-all duration-300 ${isSidebarOpen ? 'w-56' : 'w-0'} overflow-hidden`}>
+        <div className={` border-r transition-all duration-300 ${isSidebarOpen ? 'w-56' : 'w-0'} overflow-hidden`}>
           <div className="py-2">
             <div className="space-y-2">
               {menuItems.map((item: MenuItemType, index: number) => (
