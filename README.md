@@ -2,6 +2,10 @@
 Humuson 과제 테스트 제출 레포지토리입니다.  
 <br/>
 
+## 배포 사이트
+[배포 사이트 이동하기](https://humusontms.netlify.app/)  
+<br/>
+
 ## 개발 환경
 프로젝트 환경 : Node.js 0.12.1 + npm v10.5.0  
 <br/>
