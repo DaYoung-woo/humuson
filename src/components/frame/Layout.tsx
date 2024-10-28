@@ -46,7 +46,9 @@ export const Layout = () => {
             </div>
           </div>
         </div>
-        <Outlet />
+        <div style={{width: isSidebarOpen ? 'calc(100% - 223px)' : '100%'}} className='overflow-y-auto h-full bg-gray-50'>
+          <Outlet />
+        </div>
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ export const NoticeTable = () => {
   }, [filteredData])
 
   return (
-    <div className="p-6">
+    <div className="p-6 max-w-6xl m-auto">
       {/* Table Controls */}
       <div className="mb-4 flex justify-between items-center">
         <div className="text-gray-600">
