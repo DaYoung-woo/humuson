@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MenuItemType } from '../types'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp} from 'react-icons/md';
 
-export const MenuItem = ({item}: {item: MenuItemType}) => {
+const MenuItem = ({item}: {item: MenuItemType}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -41,3 +41,5 @@ export const MenuItem = ({item}: {item: MenuItemType}) => {
     </div>
   );
 }
+
+export default MenuItem
