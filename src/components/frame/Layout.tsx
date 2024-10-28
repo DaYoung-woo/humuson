@@ -46,7 +46,7 @@ export const Layout = () => {
             </div>
           </div>
         </div>
-        <Outlet /> {/* 자식 컴포넌트가 렌더링될 위치 */}
+        <Outlet />
       </div>
     </div>
   )

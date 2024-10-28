@@ -11,7 +11,6 @@ export const SearchBar = () => {
     <div className="w-full">
       <div className="bg-white border-b px-4 py-6">
         <div className="flex flex-row items-center space-x-4 justify-center">
-          {/* Search Input */}
           <div className="flex-1 max-w-2xl flex items-center space-x-2">
             <div className="basis-1/4">
               <DatePicker 

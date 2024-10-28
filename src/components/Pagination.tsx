@@ -1,6 +1,18 @@
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
-export const Pagination = ({currentPage, setCurrentPage, filteredDataLength, itemsPerPage}) => {
+export const Pagination = (
+  {
+    currentPage, 
+    setCurrentPage, 
+    filteredDataLength, 
+    itemsPerPage
+  }: {
+    currentPage: number,
+    setCurrentPage:  (page: number) => void,
+    filteredDataLength: number,
+    itemsPerPage: number
+  }
+) => {
   const totalPages = Math.ceil(filteredDataLength / itemsPerPage);
 
   const handleClickPage = (page: number) => {
