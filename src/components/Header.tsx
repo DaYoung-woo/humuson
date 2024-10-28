@@ -15,7 +15,7 @@ export const Header = ({isSidebarOpen, setIsSidebarOpen} : {isSidebarOpen: boole
             </button>
             <div className="flex items-center space-x-2">
               <span className="text-xl font-semibold">TMS</span>
-              <span className="text-sm text-emerald-100">Tool Marketing Server</span>
+              <span className="text-sm text-emerald-100">Total Marketing Server</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
